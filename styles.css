@@ -1,0 +1,386 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* colors */
+  --neutral-1: hsl(226, 43%, 10%);
+  --neutral-2: hsl(235, 46%, 20%);
+  --neutral-3: hsl(235, 45%, 61%);
+  --neutral-4: hsl(236, 100%, 87%);
+
+  --avatar: hsl(246, 80%, 60%);
+
+  --orange: hsl(15, 100%, 70%);
+  --cyan: hsl(195, 74%, 62%);
+  --red: hsl(348, 100%, 68%);
+  --green: hsl(145, 58%, 55%);
+  --purple: hsl(264, 64%, 52%);
+  --yellow: hsl(43, 84%, 65%);
+
+  /* templating for cards */
+  --bg: var(--neutral-2);
+  --time: 200ms;
+  --ease: ease-in-out;
+  --snap: cubic-bezier(0.72, -0.12, 0.24, 1.14);
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: var(--neutral-1);
+  padding: 2rem;
+  color: blueviolet;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  /* max-height: 2000px; */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+/* #GigaM {
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+} */
+.avatar {
+  /* border: solid goldenrod; */
+  background-color: var(--neutral-2);
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+}
+.avatar-top {
+  background-color: var(--avatar);
+  display: flex;
+  padding: 1rem 0rem 1rem 0.85rem;
+  /* padding-top: 1rem;
+  padding-bottom: 1rem; */
+  border-radius: 1rem;
+}
+.avatar-top > img {
+  border: solid white;
+  width: clamp(4rem, 4vw, 7.5rem);
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1.2rem;
+}
+
+h1 {
+  /* gap: clamp(1rem, 2.5vw, 2rem); */
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--neutral-4);
+}
+
+h1 > span {
+  font-size: 0.8rem;
+  color: var(--neutral-4);
+}
+h2 {
+  /* gap: clamp(1rem, 2.5vw, 2rem); */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--neutral-4);
+}
+.titleCard {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 5.5rem;
+  padding: 0.6rem 1.5rem 0.5rem 1.5rem;
+  color: white;
+  background: var(--neutral-2);
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+}
+
+.timeAmt {
+  display: flex;
+  background: var(--neutral-2);
+  padding: 0rem 1rem 1rem 1.2rem;
+}
+.timeAmt > div {
+  width: 100%;
+}
+.daily, .weekly, .monthly {
+  display: flex;
+  justify-content: space-between;
+}
+.daily h1, .weekly h1, .monthly h1 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+}
+.daily p, .weekly p, .monthly p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--neutral-4);
+  align-self: center;
+}
+
+.workContainer {
+  background-color: var(--orange);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  justify-content: start;
+  background-image: url(images/icon-work.svg);
+  background-position-x: 12rem;
+  background-position-y: -0.7rem;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding-top: 2.2rem;
+  /* padding: 2.2rem .3rem 0rem .3rem; */
+  overflow: hidden;
+}
+
+.playContainer {
+  /* border: solid rgb(45, 211, 233); */
+  background-color: var(--cyan);
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  background-image: url(images/icon-play.svg);
+  background-position-x: 12rem;
+  background-position-y: -0.7rem;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding-top: 2.2rem;
+  overflow: hidden;
+}
+.studyContainer {
+  /* border: solid rgb(248, 66, 112); */
+  background-color: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  background-image: url(images/icon-study.svg);
+  background-position-x: 12rem;
+  background-position-y: -0.7rem;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding-top: 2.2rem;
+  overflow: hidden;
+}
+.exerciseContainer {
+  /* border: solid rgba(58, 247, 130, 0.74); */
+  background-color: var(--green);
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  background-image: url(images/icon-exercise.svg);
+  background-position-x: 12rem;
+  background-position-y: -0.7rem;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding-top: 2.2rem;
+  overflow: hidden;
+}
+.socialContainer {
+  /* border: solid rgb(132, 0, 255); */
+  background-color: var(--purple);
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  background-image: url(images/icon-social.svg);
+  background-position-x: 12rem;
+  background-position-y: -0.7rem;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding-top: 2.2rem;
+  overflow: hidden;
+}
+.selfcareContainer {
+  /* border: solid rgb(251, 255, 0); */
+  background-color: var(--yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  background-image: url(images/icon-self-care.svg);
+  background-position-x: 12rem;
+  background-position-y: -0.7rem;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding-top: 2.2rem;
+  overflow: hidden;
+  white-space: nowrap; /* ver cool */
+}
+.btn {
+  /* border: solid rgb(175, 25, 163); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.button {
+  color: var(--neutral-3);
+  cursor: pointer;
+  border: none;
+  background: inherit;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+  border-radius: 1.2rem;
+  flex-basis: 33%;
+  box-shadow: 0 0 0 -0.5rem var(--bg), 0 0 0 -0.5rem var(--avatar);
+  transition: box-shadow var(--time) var(--snap), color var(--time) var(--ease);
+  /* border: solid rgb(175, 25, 163); */
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 0.1rem var(--bg), 0 0 0 0.4rem var(--avatar);
+}
+.button:where(.active, :hover, :focus-within) {
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100vw;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 450px;
+    gap: clamp(2rem, 3vw, 3rem);
+  }
+  .avatar {
+    display: grid;
+    height: 100%;
+    /* justify-content: stretch;
+    justify-self: stretch; */
+    /* width: 80%; */
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+
+    /* background-color: rgb(140, 0, 255); */
+
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .avatar-top {
+    /* justify-content: center; */
+    /* align-items: center; */
+    grid-row: 1 / 4;
+    flex-direction: column;
+    padding-top: 2rem;
+  }
+  .avatar-top img {
+    align-self: flex-start;
+  }
+  .avatar-top h1 {
+    padding-top: 0.5rem;
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+  .avatar .btn {
+    grid-row: 4 / 6;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+  }
+
+  .cardContainer {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    height: inherit;
+  }
+  .cardContainer h1 {
+    /* gap: clamp(1rem, 2.5vw, 2rem); */
+    font-size: 2.3rem;
+    font-weight: 300;
+    color: var(--neutral-4);
+  }
+
+  h2 {
+    /* gap: clamp(1rem, 2.5vw, 2rem); */
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--neutral-4);
+  }
+  .workContainer,
+  .playContainer,
+  .studyContainer,
+  .exerciseContainer,
+  .socialContainer,
+  .selfcareContainer {
+    background-position-x: 8rem;
+    background-position-y: -0.7rem;
+    /* justify-content: end; */
+    align-items: stretch;
+  }
+  .titleCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0rem 2rem 0rem;
+    column-gap: 1.5rem;
+  }
+  .titleCard h2{
+    padding-left: 1.5rem;
+    justify-self: start;
+  }
+
+  .daily,
+  .weekly,
+  .monthly {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  .daily h1,
+  .weekly h1,
+  .monthly h1 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    /* background-color: rgb(156, 99, 221); */
+  }
+
+  .daily p,
+  .weekly p,
+  .monthly p {
+    /* background-color: rgb(156, 99, 221); */
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    align-self: center;
+  }
+}
+
+ [role="tabpanel"][aria-hidden="true"] {
+  display: none;
+}
